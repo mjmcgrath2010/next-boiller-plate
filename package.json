@@ -3,13 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "nodemon server/index.js",
     "build": "next build",
-    "start": "next start"
+    "start": "node server/index.js"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
+    "add": "^2.0.6",
+    "antd": "^4.5.4",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.0",
     "next": "9.5.2",
+    "passport": "^0.4.1",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "yarn": "^1.22.4"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5"
   }
 }
