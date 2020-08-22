@@ -3644,6 +3644,11 @@ mkdirp@^0.5.1, mkdirp@^0.5.3:
   dependencies:
     minimist "^1.2.5"
 
+mmcgrath-prettier-config@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/mmcgrath-prettier-config/-/mmcgrath-prettier-config-1.0.0.tgz#42778ae94a252d676305f7ae487a03d22e721071"
+  integrity sha512-ytbWPX1/7qq+1x2pmyz2ylUFUAGM5zYwmBJA+MkIhBRfTCbnVVBJP4UPS3OAzqBsr0sd4fsXCkwd3b+X7pRbxw==
+
 moment@^2.24.0, moment@^2.25.3:
   version "2.27.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.27.0.tgz#8bff4e3e26a236220dfe3e36de756b6ebaa0105d"

@@ -1,7 +1,3 @@
-require('dotenv').config()
-
-const { createServer } = require('http')
-const { parse } = require('url')
 const next = require('next')
 
 const express = require('express')
@@ -15,23 +11,44 @@ const handle = nextApp.getRequestHandler()
 
 const PORT = process.env.PORT || 3005
 
+const db = mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log(process.env.MONGODB_URI)
+    console.log('connected')
+  })
+  .catch(e => {
+    try {
+      db.connect(process.env.MONGODB_URI, {
+        useNewUrlParser: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true,
+      })
+    } catch (e) {
+      console.error('DB IS DOWN')
+    }
+  })
 
 nextApp.prepare().then(() => {
-	// express code here
-	const app = express()
-	app.use(bodyParser.json())
-	app.use(bodyParser.urlencoded({ extended: true }))
-	app.use(express.static('public'))
+  // express code here
+  const app = express()
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(express.static('public'))
 
-	app.use(passport.initialize())
-	app.use(passport.session())
-	app.get('*', (req, res) => {
-		return handle(req, res) // for all the react stuff
-	})
+  app.use(passport.initialize())
+  app.use(passport.session())
+  app.get('*', (req, res) => {
+    return handle(req, res) // for all the react stuff
+  })
 
-	app.listen(PORT, err => {
-		if (err) {
-			throw err
-		}
-	})
+  app.listen(PORT, err => {
+    if (err) {
+      throw err
+    }
+  })
 })
